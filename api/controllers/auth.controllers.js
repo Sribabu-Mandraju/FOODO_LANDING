@@ -52,6 +52,7 @@ export const signin = async (req, res) => {
         .json({ success: false, message: "Invalid Credentials!" });
 
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+    console.log(token)
     const {
       password: pass,
       _id: id,
@@ -59,7 +60,7 @@ export const signin = async (req, res) => {
       updatedAt: updated,
       ...rest
     } = validUser._doc;
-    res.cookie("access_token", token, { httpOnly: true }).status(200).json({
+    return res.cookie("access_token", token, { httpOnly: true }).status(200).json({
       success: true,
       user: rest,
       message: "User Logged in Successfully!",

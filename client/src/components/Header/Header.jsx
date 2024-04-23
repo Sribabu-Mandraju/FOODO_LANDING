@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { signOut } from "../../redux/user/userSlice";
 
 export const Header = () => {
+  const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
   const [openNav, setOpenNav] = React.useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export const Header = () => {
   const handleLogOut = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/auth/signout",
+      const response = await fetch(`/api/auth/signout`,
       {
         method:"POST"
       }

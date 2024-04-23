@@ -7,6 +7,9 @@ import { Card, Typography } from "@material-tailwind/react";
 import { Button } from "@material-tailwind/react";
 import { RiDeleteBin6Line, RiEdit2Fill } from "react-icons/ri";
 
+
+
+
 import { Model2 } from "../components/models/Model2";
 
 import toast from "react-hot-toast";
@@ -25,6 +28,7 @@ const TABLE_HEAD = [
 ];
 
 const Dashboard = () => {
+  const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
   const [id, setId] = useState("");
   const [allDonations, setAllDonations] = useState([]);
   const [filteredDonations, setFilteredDonations] = useState([]); // State to store filtered donations
@@ -34,7 +38,7 @@ const Dashboard = () => {
 
   const fetchAllDonations = async () => {
     try {
-      const response = await fetch("/api/auth/getdonations");
+      const response = await fetch(`/api/auth/getdonations`);
       const data = await response.json();
       if (!data.success) {
         toast.error(data.message);

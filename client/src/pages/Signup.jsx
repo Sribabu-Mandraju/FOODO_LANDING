@@ -5,12 +5,13 @@ import toast from "react-hot-toast";
 
 const Signup = () => {
   // State variables for registration form data
+  const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
-
+  
   const navigate = useNavigate();
 
   // Handler function to update state when input values change
@@ -27,7 +28,7 @@ const Signup = () => {
     e.preventDefault();
     console.log("handle submit called");
     // Handle form submission logic here
-    const response = await fetch("/api/auth/signup", {
+    const response = await fetch(`/api/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

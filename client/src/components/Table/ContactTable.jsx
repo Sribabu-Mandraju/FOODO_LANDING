@@ -62,6 +62,7 @@ const TABLE_ROWS = [
 ];
 
 export const ContactTable = () => {
+  const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -69,7 +70,7 @@ export const ContactTable = () => {
   const [contacts, setContacts] = useState([]);
   const fetchAllContacts = async () => {
     try {
-      const respsone = await fetch("/api/auth/allContacts");
+      const respsone = await fetch(`/api/auth/allContacts`);
       const data = await respsone.json();
       // console.log(data.data, "data");
       setContacts(data.data);
@@ -116,10 +117,10 @@ export const ContactTable = () => {
   
   const filteredDataByDate = fromDate && toDate ? filterDataByDate() : contacts;
 
-  const filteredData = filteredDataByDate.filter(item => {
-    const email = item.email.toLowerCase();
+  const filteredData = filteredDataByDate?.filter(item => {
+    const email = item?.email?.toLowerCase();
   
-    return email.includes(searchTerm.toLowerCase());
+    return email?.includes(searchTerm?.toLowerCase());
   });
 
   return (

@@ -20,7 +20,7 @@ mongoose
 
 const app = express();
 app.use(express.json());
-const allowedOrigins = [process.env.FRONTEND_URL];
+const allowedOrigins = [process.env.FRONTEND_URL,process.env.ADMIN_URL];
  // Add your allowed origin here
 const corsOptions = {
   origin: function (origin, callback) {

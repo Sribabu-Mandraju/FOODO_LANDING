@@ -9,6 +9,7 @@ import {
 import toast from "react-hot-toast";
 
 export const EditModel = ({ data, button }) => {
+  const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
   const [open, setOpen] = React.useState(false);
   const [edit, setEdit] = useState({
     foodname: data.foodname,

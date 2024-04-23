@@ -11,6 +11,9 @@ import {
 } from "../redux/user/userSlice.js";
 
 const Signin = () => {
+  const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
+  console.log("text",apiUrl)
+  console.log("error")
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading, error, currentUser } = useSelector((state) => state.user);
@@ -36,8 +39,9 @@ const Signin = () => {
     // console.log("login called");
     // console.log(formData, "form data");
     try {
+      console.log(apiUrl,"error")
       dispatch(signInStart());
-      const response = await fetch("/api/auth/signin", {
+      const response = await fetch(`/api/auth/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

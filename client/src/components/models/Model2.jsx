@@ -8,6 +8,7 @@ import {
 } from "@material-tailwind/react";
 
 export const Model2 = ({ children, button, title }) => {
+  // const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
   const [open, setOpen] = React.useState(false);
 
   // const deleteDonation = async ({id}) => {
