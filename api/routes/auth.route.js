@@ -22,8 +22,8 @@ router.post("/signout", signOut);
 
 //food routes
 router.post("/donatefood", DonateFood);
-router.get("/getdonations", GetALlDonations);
-router.patch("/updatedonation/:id", UpdateDonationByID);
+router.get("/getdonations",verifyToken, GetALlDonations);
+router.patch("/updatedonation/:id",verifyToken, UpdateDonationByID);
 router.delete("/deletedonation/:id", verifyToken, DeleteDonation);
 
 //contact routes
