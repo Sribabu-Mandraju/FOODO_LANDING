@@ -1,5 +1,13 @@
+import express from "express";
+import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
 
+const app = express();
+
+// Add the cookie-parser middleware
+app.use(cookieParser());
+
+// Your verifyToken middleware function
 export const verifyToken = (req, res, next) => {
   const token = req.cookies.access_token;
 
@@ -17,3 +25,5 @@ export const verifyToken = (req, res, next) => {
     }
   });
 };
+
+export default app;

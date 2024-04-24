@@ -1,5 +1,6 @@
 import express from "express";
 import { signOut, signin, signup } from "../controllers/auth.controllers.js";
+import { verifiedToken } from "../index.js";
 import {
   DonateFood,
   GetALlDonations,
@@ -21,8 +22,8 @@ router.post("/signout", signOut);
 
 //food routes
 router.post("/donatefood", DonateFood);
-router.get("/getdonations", verifyToken, GetALlDonations);
-router.patch("/updatedonation/:id", verifyToken, UpdateDonationByID);
+router.get("/getdonations", GetALlDonations);
+router.patch("/updatedonation/:id", UpdateDonationByID);
 router.delete("/deletedonation/:id", verifyToken, DeleteDonation);
 
 //contact routes
