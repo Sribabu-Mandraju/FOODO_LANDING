@@ -20,24 +20,26 @@ mongoose
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL,"https://food-client-kbkq.vercel.app/"];
+// const allowedOrigins = [process.env.FRONTEND_URL, process.env.ADMIN_URL,"https://food-client-kbkq.vercel.app","http://localhost:5173"];
 
-// Configure CORS
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      // Origin is allowed or it's a same-origin request
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true, // Allow sending cookies
-  optionsSuccessStatus: 200,
-};
+// // Configure CORS
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+//       // Origin is allowed or it's a same-origin request
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true, // Allow sending cookies
+//   optionsSuccessStatus: 200,
+// };
 
-app.use(cors(corsOptions));
-app.use(cookieParser()); 
+app.use(cors({
+  origin: true,
+  credentials: true,
+}));app.use(cookieParser()); 
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000!");
